@@ -13,13 +13,13 @@ class CreateProdutosTable extends Migration
     public function up()
     {
         Schema::create('produtos', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('nomeProduto')->unique();
             $table->integer('dispProduto');
             $table->integer('retiravel');
-            $table->unsignedInteger('categoria_id');
+            $table->bigInteger('categoria_id')->unsigned();
             $table->foreign('categoria_id')->references('id')->on('categorias');
-            $table->unsignedInteger('tempopartida_id');
+            $table->bigInteger('tempopartida_id')->unsigned();
             $table->foreign('tempopartida_id')->references('id')->on('tempopartidas');
             $table->timestamps();
         });

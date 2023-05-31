@@ -17,7 +17,7 @@ class CreateReservasTable extends Migration
             $table->date('diaReserva');
             $table->time('horaReserva');
             $table->string('tipoReserva');
-            $table->unsignedInteger('user_id');
+            $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });

@@ -13,7 +13,7 @@ class CreateJogadoresTable extends Migration
     public function up()
     {
         Schema::create('jogadores', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->integer('numJogadores');
             $table->timestamps();
         });
