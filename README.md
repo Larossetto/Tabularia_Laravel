@@ -5,6 +5,9 @@
 Este é um projeto de uma Tabularia desenvolvida na linguagem PHP usando o framework Laravel e a Backpack.
 
 # Aula 30/05
+
 Foi feita a correção na criação das migrations usando a backpack.
 
 Após ligar o xamp e criar as migrations acessar o endereço localhost:8000/admin
+
+# Aula 06/06
