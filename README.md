@@ -11,3 +11,4 @@ Foi feita a correção na criação das migrations usando a backpack.
 Após ligar o xamp e criar as migrations acessar o endereço localhost:8000/admin
 
 # Aula 06/06
+
