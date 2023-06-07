@@ -12,3 +12,4 @@ Após ligar o xamp e criar as migrations acessar o endereço localhost:8000/admi
 
 # Aula 06/06
 
+Professor revisou o conteúdo sobre Laravel, MVC, Join.
