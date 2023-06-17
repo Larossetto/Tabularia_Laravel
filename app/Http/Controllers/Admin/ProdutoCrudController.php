@@ -42,8 +42,8 @@ class ProdutoCrudController extends CrudController
         CRUD::column('nomeProduto');
         CRUD::column('dispProduto');
         CRUD::column('retiravel');
-        CRUD::column('categoria_id');
-        CRUD::column('tempopartida_id');
+        CRUD::column('categoria_id')->model('App\Models\Categoria')->attribute('nomeCategoria')->entity('Categoria');
+        CRUD::column('tempopartida_id')->model('App\Models\Tempopartida')->attribute('tempoMedio')->entity('Tempopartida')->label('Tempo médio (min)');
         CRUD::column('created_at');
         CRUD::column('updated_at');
 
@@ -67,8 +67,10 @@ class ProdutoCrudController extends CrudController
         CRUD::field('nomeProduto');
         CRUD::field('dispProduto');
         CRUD::field('retiravel');
-        CRUD::field('categoria_id');
+        CRUD::field('categoria_id')->type('select')->model('App\Models\Categoria')->attribute('nomeCategoria')->entity('Categoria');
         CRUD::field('tempopartida_id');
+        CRUD::field('tempopartida_id')->type('select')->model('App\Models\Tempopartida')->attribute('tempoMedio')->entity('Tempopartida');
+
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

@@ -37,6 +37,11 @@ class Tempopartida extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function produto(): HasMany
+    {
+        return $this->hasMany(Produto::class);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

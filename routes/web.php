@@ -26,3 +26,7 @@ Route::get('/users',[App\Http\Controllers\UsersController::class,'index']);
 Route::delete('/users/{id}',[App\Http\Controllers\UsersController::class, 'deletar_user'])->name('deletar_user');
 Route::put('/users/{id}',[App\Http\Controllers\UsersController::class, 'atualizar_user'])->name('atualizar_user');
 Route::post('/users/',[App\Http\Controllers\UsersController::class, 'criar_user'])->name('criar_user');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
