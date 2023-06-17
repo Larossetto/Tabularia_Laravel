@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\ProdutoRequest;
+use App\Http\Requests\ReservaRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class ProdutoCrudController
+ * Class ReservaCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class ProdutoCrudController extends CrudController
+class ReservaCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class ProdutoCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Produto::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/produto');
-        CRUD::setEntityNameStrings('produto', 'produtos');
+        CRUD::setModel(\App\Models\Reserva::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/reserva');
+        CRUD::setEntityNameStrings('reserva', 'reservas');
     }
 
     /**
@@ -39,14 +39,13 @@ class ProdutoCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('nomeProduto')->label('Jogo');
-        //CRUD::column('dispProduto');
-        //CRUD::column('retiravel');
-        CRUD::column('categoria_id')->model('App\Models\Categoria')->attribute('nomeCategoria')->entity('Categoria');
-        CRUD::column('tempopartida_id')->model('App\Models\Tempopartida')->attribute('tempoMedio')->entity('Tempopartida')->label('Tempo médio (min)');
-        CRUD::column('jogadore')->model('App\Models\Jogadore')->attribute('numJogadores')->entity('Jogadore')->label('Possíveis Jogadores');
-        CRUD::column('created_at')->label('Criado');
-        CRUD::column('updated_at')->label('Atualizado');
+        CRUD::column('diaReserva');
+        CRUD::column('horaReserva');
+        CRUD::column('tipoReserva');
+        CRUD::column('user_id');
+        
+        CRUD::column('created_at');
+        CRUD::column('updated_at');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -63,14 +62,15 @@ class ProdutoCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(ProdutoRequest::class);
+        CRUD::setValidation(ReservaRequest::class);
 
-        CRUD::field('nomeProduto')->label('Jogo');
-        CRUD::field('dispProduto');
-        CRUD::field('retiravel');
-        CRUD::field('categoria_id')->type('select')->model('App\Models\Categoria')->attribute('nomeCategoria')->entity('Categoria');
-        CRUD::field('tempopartida_id')->type('select')->model('App\Models\Tempopartida')->attribute('tempoMedio')->entity('Tempopartida')->label('Tempo médio (min)');
-        CRUD::field('jogadore')->type('checklist')->model('App\Models\Jogadore')->attribute('numJogadores')->entity('Jogadore')->label('Possíveis Jogadores');
+        CRUD::field('diaReserva');
+        CRUD::field('horaReserva');
+        CRUD::field('tipoReserva');
+        //CRUD::field('user_id');
+        CRUD::field('user_id')->type('select')->model('App\Models\users')->attribute('name')->entity('users');
+        CRUD::field('produto')->type('checklist')->model('App\Models\Produto')->attribute('nomeProduto')->entity('Produto')->label('Jogo');
+
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

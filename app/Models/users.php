@@ -5,10 +5,12 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class users extends Model
 {
     use CrudTrait;
+    use HasFactory;
     protected $table = 'users';
 
     protected $fillable = ['name','email','password'];
@@ -25,5 +27,16 @@ class users extends Model
         $user->name = $name;
         $user->email = $email;
         $user->save();
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | RELATIONS
+    |--------------------------------------------------------------------------
+    */
+
+    public function reserva(): BelongsTo
+    {
+        return $this->BelongsTo(Reserva::class);
     }
 }

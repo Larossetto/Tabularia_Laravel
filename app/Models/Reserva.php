@@ -5,9 +5,10 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Jogadore extends Model
+class Reserva extends Model
 {
     use CrudTrait;
     use HasFactory;
@@ -18,7 +19,7 @@ class Jogadore extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'jogadores';
+    protected $table = 'reservas';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -37,6 +38,15 @@ class Jogadore extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+
+    public function users(): HasMany
+    {
+        return $this->hasMany(Users::class);
+    }
+/*
+    ->withDefault(function (User $user, Post $post) {
+        $user->name = 'Guest Author';
+    })*/
 
     public function produto(): BelongsToMany
     {

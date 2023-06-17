@@ -5,3 +5,4 @@
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('jogadore') }}"><i class="nav-icon la la-question"></i> Possíveis Jogadores</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('tempopartida') }}"><i class="nav-icon la la-question"></i> Tempos de Partida</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('produto') }}"><i class="nav-icon la la-question"></i> Produtos</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('reserva') }}"><i class="nav-icon la la-question"></i> Reservas</a></li>
